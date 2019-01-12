@@ -1,5 +1,7 @@
 <h1>Timesheet Application</h1>
-{{form}}
-<form name='timebut'>
+{% for item in wdate %}
+{{item}}
+{% endfor %}
+<form name='timebut' method='POST'>
 <button type='submit' value='submit'>Clock in</button>
 </form

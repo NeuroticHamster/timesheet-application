@@ -36,7 +36,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = flask, openssl, pyopenssl, sqlite3, requests, sqlalchemy, WTForms, flask-wtf, flask-paginate
+requirements = flask, openssl, pyopenssl, sqlite3, requests, sqlalchemy, WTForms, flask-wtf, flask-paginate, openpyxl
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes

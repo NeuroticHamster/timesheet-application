@@ -3,16 +3,21 @@
 <script src='/ratchet-2.0.2/dist/js/ratchet.min.js'></script>
   <link href='/ratchet-2.0.2/dist/css/ratchet-theme-ios.css', rel='stylesheet'>
 <link href='/ratchet-2.0.2/dist/css/ratchet.css', rel='stylesheet'>
+<script src='/hammer.js-1.1.x/hammer.js' ></script>
 
 </head>
 <header>
 	<header class="bar bar-nav">
-  <h1 class="title">Clock in</h1>
+  {% include 'head.html' %}
+  {% block head %}
+  {% endblock %}
 </header>
 
 
 
 </header>
+<body>
+<div id='myElement'>
 <div style='padding-bottom: 40px;'></div>
 <div style='text-align: center;'>
 <h1>Timesheet Application</h1>
@@ -35,3 +40,22 @@ End Time:
 <button type='submit' value='submit'>Clock in</button>
 </form>
 </div>
+</div>
+</body>
+    <script>
+
+
+  var myElement = document.getElementById('myElement');
+
+// create a simple instance
+// by default, it only adds horizontal recognizers
+var mc = new Hammer(myElement);
+
+// listen to events...
+mc.on("swiperight", function(ev) {
+    window.location = "/overview";
+});
+
+mc.on("swipeleft", function(ev) {
+    window.location = "/overview";
+});</script>

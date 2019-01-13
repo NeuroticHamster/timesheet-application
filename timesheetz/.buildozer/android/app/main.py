@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine, String, Integer, Column, Float, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 import time
+import openpyxl
 engine = create_engine('sqlite:///timesheetz.db:')
 base = declarative_base(engine)
 
@@ -48,19 +49,22 @@ def basic_route():
 			sqlsession.add(svalue)
 			sqlsession.commit()
 			print('added')
+			return redirect(url_for('basic_route'))
 		elif str(convertDate) in str(wdate) and str(*sqlsession.query(times.start_time)[-1]) != str(None):
 			print(str(*sqlsession.query(times.start_time)[-1]))
 			print('oh shit')
 			svalue = times(end_time=convertTime, date=convertDate)
 			sqlsession.add(svalue)
 			sqlsession.commit()
+			return redirect(url_for('basic_route'))
+
 		else:
 			flash('Already added')
 			print('nope')
-
+			return redirect(url_for('overview'))
 	return render_template('index.html', wdate=wdate, wtime=wtime, etime=etime)
 @app.route('/overview')
 def overview():
-	return 'hi'
+	return render_template('overview.html')
 app.secret_key='just a check for now'
 app.run(host='0.0.0.0')
